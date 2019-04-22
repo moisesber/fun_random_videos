@@ -8,6 +8,20 @@ Requires python 3.
 ```bash
 python  fun_random_videos.py
 ```
+# I have a bunch of funny videos, how can I add them?
+
+Just edit the `fun_videos.ini` file adding and/or removing the example video links and restart the server. Remember to add the `embed` links, not the regular `watch` ones. Here is how the video list session of the ini file should look like:
+
+```ini
+[fun_videos]
+videos=
+# jonny castaway
+  https://www.youtube.com/embed/NTg5fXyujnM
+# gandalf amazing sax guy
+  https://www.youtube.com/embed/G1IbRujko-A
+# keyboard cat
+  https://www.youtube.com/embed/O2ulyJuvU3Q
+```
 
 # How to configure the WebViewScreenSaver?
 
