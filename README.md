@@ -1,5 +1,5 @@
 # fun_random_videos
-The [WebViewScreenSaver](https://github.com/liquidx/webviewscreensaver) is a screen saver for Macos that allows you to put websites, or even videos, as your screen saver. I find it fun to have fun youtube videos as screen savers but since I like a bunch of those I thought it would be nice to have a way to set a list of those and make the WebViewScreenSaver show one of the videos for each time the OS loads a screen saver. The code in this repo does just that.
+The [WebViewScreenSaver](https://github.com/liquidx/webviewscreensaver) is a screen saver for MacOS that allows you to put websites, or even videos, as your screen saver. I find it fun to have fun youtube videos as screen savers but since I like a bunch of those I thought it would be nice to have a way to set a list of those and make the WebViewScreenSaver show one of the videos for each time the OS loads a screen saver. The code in this repo does just that.
 
 # How to run this?
 
