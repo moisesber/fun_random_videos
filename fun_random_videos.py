@@ -68,12 +68,21 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(
             bytes(
-                """<!DOCTYPE html><html><body><iframe width="%s" height="%s" src="%s"></iframe></body></html>"""
-                % (width, height, self.get_video_string()),
+                """<!DOCTYPE html>
+                    <html>
+                        <body>
+                            <p id="funvideo"></p>
+                            <script>
+                                var w = window.innerWidth;
+                                var h = window.innerHeight;
+                                document.getElementById("funvideo").innerHTML = '<iframe width="' + w + '" height="'+ h +'" src="%s"</iframe>';
+                            </script>
+                        </body>
+                    </html>"""
+                % (self.get_video_string()),
                 "UTF-8",
             )
         )
-
 
 httpd = HTTPServer(("localhost", 8000), SimpleHTTPRequestHandler)
 httpd.serve_forever()
