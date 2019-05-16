@@ -1,5 +1,5 @@
 # fun_random_videos
-The [WebViewScreenSaver](https://github.com/liquidx/webviewscreensaver) is a screen saver for Macos that allows you to put websites, or even videos, as your screen saver. I find it fun to have fun youtube videos as screen savers but since I like a bunch of those I thought it would be nice to have a way to set a list of those and make the WebViewScreenSaver show one of the videos for each time the OS loads a screen saver. The code in this repo does just that.
+The [WebViewScreenSaver](https://github.com/liquidx/webviewscreensaver) is a screen saver for MacOS that allows you to put websites, or even videos, as your screen saver. I find it fun to have fun youtube videos as screen savers but since I like a bunch of those I thought it would be nice to have a way to set a list of those and make the WebViewScreenSaver show one of the videos for each time the OS loads a screen saver. The code in this repo does just that.
 
 # How to run this?
 
@@ -7,6 +7,20 @@ Requires python 3.
 
 ```bash
 python  fun_random_videos.py
+```
+# I have a bunch of funny videos, how can I add them?
+
+Just edit the `fun_videos.ini` file adding and/or removing the example video links and restart the server. Remember to add the `embed` links, not the regular `watch` ones. Here is how the video list session of the ini file should look like:
+
+```ini
+[fun_videos]
+videos=
+# jonny castaway
+  https://www.youtube.com/embed/NTg5fXyujnM
+# gandalf amazing sax guy
+  https://www.youtube.com/embed/G1IbRujko-A
+# keyboard cat
+  https://www.youtube.com/embed/O2ulyJuvU3Q
 ```
 
 # How to configure the WebViewScreenSaver?
