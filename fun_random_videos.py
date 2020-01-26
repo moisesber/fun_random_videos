@@ -2,7 +2,25 @@ import random
 import json
 import configparser
 import re
+import argparse
+import sys
+import logging
 from http.server import HTTPServer, BaseHTTPRequestHandler
+
+logger = logging.getLogger(__name__)
+c_handler = logging.StreamHandler()
+c_format = logging.Formatter('%(asctime)s-%(process)d-%(levelname)s: %(message)s')
+c_handler.setFormatter(c_format)
+c_handler.setLevel(logging.DEBUG)
+logger.addHandler(c_handler)
+
+
+parser = argparse.ArgumentParser(description='Process some integers.')
+parser.add_argument('--config-path', help='Full path to the configuration file.',
+                   default='fun_videos.ini')
+
+args = parser.parse_args()
+config_path = args.config_path
 
 default_fun_videos = [
     "https://www.youtube.com/embed/NTg5fXyujnM",  # jonny castaway
@@ -10,13 +28,16 @@ default_fun_videos = [
     "https://www.youtube.com/embed/O2ulyJuvU3Q",  # keyboard cat
 ]
 config = configparser.ConfigParser()
-config.read("fun_videos.ini")
+logger.warning('Reading configs from file %s', config_path)
+config.read(config_path)
 config_videos_list = None
 
 if "fun_videos" in config.sections():
+    logger.warning('Found fun_videos defined in config file.')
     if "videos" in config["fun_videos"]:
         config_videos_list_str = config.get("fun_videos", "videos")
         config_videos_list = re.split(",|\n| ", config_videos_list_str)
+        logger.warning('Videos found were: %s', config_videos_list)
 
         # cleaning up formatting ini file formatting issues
         if "" in config_videos_list:
@@ -31,6 +52,7 @@ if "display_settings" in config.sections():
 
     if "height" in config["display_settings"]:
         height = config.get("display_settings", "height")
+logger.warning('Display settings found were: W: %s and H: %s', width, height )
 
 port = 8000
 if "server" in config.sections():
@@ -43,6 +65,7 @@ if not config_videos_list:
 random.shuffle(config_videos_list)
 shuffled_videos = config_videos_list
 
+logger.warning('Running HTTP server on port %s', port)
 
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     video_index = 0
